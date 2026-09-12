@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker — Track where your money goes</title>
+  <meta name="description" content="A simple, private expense tracker. No sign-up, no servers — your data stays in your browser." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💸</text></svg>" />
+</head>
+<body>
+  <header>
+    <h1>💸 Expense Tracker</h1>
+    <p class="tagline">Track where your money goes — privately, in your browser.</p>
+  </header>
+
+  <main>
+    <section class="summary">
+      <div class="card">
+        <span class="label">This month</span>
+        <span class="value" id="total-month">Rs 0</span>
+      </div>
+      <div class="card">
+        <span class="label">Entries</span>
+        <span class="value" id="entry-count">0</span>
+      </div>
+      <div class="card">
+        <span class="label">Top category</span>
+        <span class="value small" id="top-category">—</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Add an expense</h2>
+      <form id="expense-form" autocomplete="off">
+        <input type="number" id="amount" placeholder="Amount (Rs)" min="0.01" step="0.01" required />
+        <select id="category" required>
+          <option value="">Category…</option>
+          <option>Food</option>
+          <option>Transport</option>
+          <option>Education</option>
+          <option>Entertainment</option>
+          <option>Health</option>
+          <option>Other</option>
+        </select>
+        <input type="text" id="note" placeholder="Note (optional)" maxlength="60" />
+        <input type="date" id="date" required />
+        <button type="submit">Add expense</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Spending by category</h2>
+      <div class="chart-row">
+        <canvas id="chart" width="220" height="220" aria-label="Spending by category chart"></canvas>
+        <ul id="legend"></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="list-header">
+        <h2>History</h2>
+        <div class="filters">
+          <select id="filter-month"></select>
+          <select id="filter-category">
+            <option value="">All categories</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Education</option>
+            <option>Entertainment</option>
+            <option>Health</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <ul id="expense-list"></ul>
+      <p id="empty-state" class="empty">No expenses yet — add your first one above.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Everything is stored locally in your browser — nothing leaves your device. Built by <a href="https://github.com/muhammadmudasir-gif">Mudasir</a> · <a href="https://github.com/muhammadmudasir-gif/expense-tracker">Source on GitHub</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
